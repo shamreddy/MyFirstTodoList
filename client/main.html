@@ -1,0 +1,55 @@
+
+
+  <head>
+    <meta charset="utf-8">
+  
+    <title>MyTodos</title>
+  </head>
+
+  <body>
+      <div class="container">
+      <header>
+      <h1>Todo List</h1>
+      {{>loginButtons}}
+    </header>
+ <div>
+   {{>main}}
+  </div>
+
+    
+
+    <footer class="container">
+      <p>&copy; MyTodos 2018</p>
+    </footer>
+
+   </div>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+   
+  </body>
+
+  <template name="main">
+    {{#if currentUser}}
+    <form class = "new-todo">
+        <div class = "form-group">
+        <input class = "form-control" name="text" type = "text" placeholder= "Type a task...">
+      </div>
+    </form>
+    {{/if}}
+    <ul>
+          {{#each todos}}
+                <li class="{{#if checked}}checked{{/if}}">
+                  {{#if currentUser}}
+                  <input type="checkbox" checked="{{checked}}" class = "toggle-check">
+                   {{/if}}
+                  <span>{{todo}}</span>
+                  {{#if currentUser}}
+                  <button class="delete-todo">&times;</button>
+                   {{/if}}
+                  </li>
+          {{/each}}
+    </ul>  
+
+  </template>
+
